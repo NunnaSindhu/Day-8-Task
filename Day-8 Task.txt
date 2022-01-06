@@ -1,0 +1,214 @@
+							TASK-8
+1.https://github.com/rvsp/typescript-oops/blob/master/Practice/Movie.md
+2.https://github.com/rvsp/typescript-oops/blob/master/Practice/class-circle.md
+3.Write a “person” class to hold all the details.
+4.write a class to calculate uber price.
+
+QUESTION:1) The class Movie is stated below. An instance of class Movie represents a film. This class has the following three properties:
+
+title, which is a String representing the title of the movie
+studio, which is a String representing the studio that made the movie
+rating, which is a String representing the rating of the movie (i.e. PG­13, R, etc)
+a) Write a constructor for the class Movie, which takes a String representing the title of the movie, a String representing the studio, 
+and a String representing the rating as its arguments, and sets the respective class properties to these values.
+
+b) The constructor for the class Movie will set the class property rating to "PG" as default when no rating is provided.
+
+c) Write a method getPG, which takes an array of base type Movie as its argument, and returns a new array of only those movies in the input array with a rating of "PG". You may assume the input array is full of Movie instances. The returned array need not be full.
+
+d) Write a piece of code that creates an instance of the class Movie with the title “Casino Royale”, the studio “Eon Productions”, and the rating “PG­13”
+
+ANSWER:
+1.a)Write a constructor for the class Movie, which takes a String representing the title of the movie, a String representing the studio, 
+and a String representing the rating as its arguments, and sets the respective class properties to these values.
+
+code:class Movie{
+    constructor(title,studio,rating){
+        this.title=title;
+        this.studio=studio;
+        this.rating=rating;
+    }
+getData(){
+        return `Title: ${this.title}
+                Studio: ${this.studio}
+                Rating: ${this.rating}`
+    }
+}
+const movieinfo = new Movie("RRR", "Pen Studios","G");
+console.log(movieinfo.getData());
+
+Result:
+
+Title: RRR
+Studio: Pen Studios
+Rating: G
+
+Question 1.b)The constructor for the class Movie will set the class property rating to "PG" as default when no rating is provided.
+code:class Movie{
+    constructor(title,studio,rating="PG"){
+        this.title=title;
+        this.studio=studio;
+        this.rating=rating;
+    }
+getData(){
+        return `Title: ${this.title}
+                Studio: ${this.studio}
+                Rating: ${this.rating}`
+    }
+}
+const movieinfo = new Movie("Casino Royale", "MovieEon Productions");
+console.log(movieinfo.getData());
+
+Result:
+
+Casino Royale
+Studio: MovieEon Productions
+Rating: PG
+
+Question:1.c)Write a method getPG, which takes an array of base type Movie as its argument, 
+and returns a new array of only those movies in the input array with a rating of "PG". 
+You may assume the input array is full of Movie instances. The returned array need not be full.
+code:
+class Movie {
+  getPG(arr) {
+    let data = [];
+    for (let i in arr) {
+      if (arr[i].rating === "PG") {
+        data.push(arr[i].title);
+      }
+    }
+    console.log(data.join(" "));
+  }
+}
+
+const pGMovies = new Movie();
+pGMovies.getPG([
+  { title: "RRR", studio: "Pen Studios", rating: "G" },
+  { title: "Casino Royale", studio: "MovieEon Productions", rating: "PG­13" },
+  { title: "RED", studio: "DVV", rating: "PG" },
+  { title: "Gremlins", studio: "Amblin Entertainment", rating: "PG" },
+]);
+
+Result:['RED', 'Gremlins']
+
+Question:1.d)Write a piece of code that creates an instance of the class Movie with the title “Casino Royale”, 
+the studio “Eon Productions”, and the rating “PG­13”.
+
+Code:class Movie{
+    constructor(title,studio,rating="PG"){
+        this.title=title;
+        this.studio=studio;
+        this.rating=rating;
+    }
+    getData(){
+        return `Title: ${this.title}
+                Studio: ${this.studio}
+                Rating: ${this.rating}`
+    }
+}
+const movieinfo = new Movie("Casino Royale", "MovieEon Productions","PG­13");
+console.log(movieinfo.getData());
+
+Result:
+
+Casino Royale
+Studio: MovieEon Productions
+Rating: PG­13
+
+
+Question:2)https://github.com/rvsp/typescript-oops/blob/master/Practice/class-circle.md
+
+code:
+
+class Circle {
+  setradius(radius) {
+    this.radius = radius;
+  }
+  setcolor(color) {
+    this.color = color;
+  }
+  getradius() {
+    return `Radius:${this.radius}`;
+  }
+  getcolor() {
+    return `Color:${this.color}`;
+  }
+  getArea() {
+    let area = Math.PI * this.radius * this.radius;
+    return area.toFixed(2);
+  }
+  getCircumference() {
+    let circumference = 2 * Math.PI * this.radius;
+    return circumference.toFixed(2);
+  }
+}
+const circledata = new Circle();
+circledata.setradius(1.0);
+circledata.setcolor("red");
+console.log(`${circledata.getradius()}
+${circledata.getcolor()}
+${circledata.getArea()}
+${circledata.getCircumference()}`);
+
+Result:
+
+Radius:1
+Color:red
+3.14
+6.28
+
+Question: 3)Write a “person” class to hold all the details
+
+Code:
+class person {
+  greetings() {
+    return "Welcome to method greetings";
+  }
+  getFood(msg1) {
+    return msg1;
+  }
+  static displaywalk() {
+    return "Iam static method with the name displaywalk";
+  }
+  constructor(message) {
+    this.message = "Iam " + message;
+  }
+}
+let obj = new person();
+console.log(obj.greetings());
+console.log(obj.getFood("I would like to eat Pizza")); //invoking getFood method by passing arguments
+console.log(person.displaywalk());//calling static method with class reference
+let objperson1 = new person("Sindhu"); //invoking constructor
+console.log(objperson1);
+let objFood = new person();
+console.log(objFood.getFood("Omkar"));
+
+Output:
+
+Welcome to method greetings
+I would like to eat Pizza
+Iam static method with the name displaywalk
+person {message: 'Iam Sindhu'}
+Omkar
+
+8. write a class to calculate uber price.
+Answer:
+class uberPrice{
+    constructor(distance,pricePerKm){
+        this.distance=distance;
+        this.pricePerKm=pricePerKm;
+    }
+    getPrice(){
+        return this.distance*this.pricePerKm;
+    }
+}
+const price=new uberPrice(4,50);
+console.log(`Total Price: ${price.getPrice()}`);
+
+Output:
+Total Price: 200
+
+
+
+
+
